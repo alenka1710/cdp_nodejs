@@ -7,7 +7,6 @@ console.log(config.name)
 
 const user = new User()
 const product = new Product()
-
 const emitter = new EventEmitter()
 const dirWatcher = new DirWatcher(emitter)
 const importer = new Importer(emitter)
