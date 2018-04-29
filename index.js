@@ -1,4 +1,4 @@
-import { User, Product } from './models'
+import 'babel-register'
 import config from './config'
 
 console.log(config.name)
