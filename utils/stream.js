@@ -14,6 +14,15 @@ const helpText = "This tool will help you to run some stream utilities.\n"
                 "--help, -h         Call for hepl"
 
 
+const reverse = () => {
+  process.stdin.on('readable', function() {
+    const str = process.stdin.read(0).toString()
+    const strArray = str.split('')
+    const output = strArray.reverse().join('')
+    this.push(output)
+  })
+}
+
 const convertFromFile = (file) => {
   const reader = fs.createReadStream(file)
   reader.pipe(process.stdout)
@@ -71,7 +80,7 @@ const cssBundler = (dirname) => {
       files.map((file) => {
         fs.createReadStream(`${dirname}/${file}`)
           .pipe(through2(function(chunk, enc, cb) {
-            const css = chunk.toString()  "\n";
+            const css = `${chunk.toString()}\n`;
             this.push(css);
             cb();
           }))
